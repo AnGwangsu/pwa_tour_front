@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-content>
+    <!-- <v-content>
       <v-container fluid fill-height>
         <v-layout align-center>
           <v-flex xs12 class="text-center">
@@ -10,7 +10,10 @@
           </v-flex>
         </v-layout>
       </v-container>
-    </v-content>
+    </v-content> -->
+    <v-main>
+      <router-view/>
+    </v-main>
   </v-app>
 </template>
 
@@ -18,11 +21,10 @@
 export default {
   name: 'App',
 
-  data: () => ({
-    //
-  }),
-  created(){
-    this.$vuetify.theme.dark = true;
-  }
+  data() {
+    return {
+      
+    }
+  },
 };
 </script>
