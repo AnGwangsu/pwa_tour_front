@@ -5,6 +5,7 @@ Vue.use(Router)
 
 import Splash from '@/components/common/Splash'
 import Home from '@/components/common/Home'
+import Login from '@/components/user/Login'
 
 export default new Router({
     mode:'history',
@@ -21,6 +22,11 @@ export default new Router({
             path:'/home',
             name:'Home',
             component:Home
+        },
+        {
+            path:'/login',
+            name:'Login',
+            component:Login
         }
     ]
 })
