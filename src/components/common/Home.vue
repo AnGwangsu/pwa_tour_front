@@ -70,9 +70,9 @@ export default {
 </script>
 
 <style>
-    .main_1{height: 100vh;background-image:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url('../../assets/images/winter.jpeg');background-size:cover;color:#fff;position: relative;}
-    .main_2{height: 100vh;background-image:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url('../../assets/images/spring.jpeg');background-size:cover;color:#fff;position: relative;}
-    .main_3{height: 100vh;background-image:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url('../../assets/images/summer.jpeg');background-size:cover;color:#fff;position: relative;}
-    .main_4{height: 100vh;background-image:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url('../../assets/images/fall.jpeg');background-size:cover;color:#fff;position: relative;}
+    .main_1{height: 100vh;background-image:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url('../../assets/images/season/winter.jpeg');background-size:cover;color:#fff;position: relative;}
+    .main_2{height: 100vh;background-image:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url('../../assets/images/season/spring.jpeg');background-size:cover;color:#fff;position: relative;}
+    .main_3{height: 100vh;background-image:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url('../../assets/images/season/summer.jpeg');background-size:cover;color:#fff;position: relative;}
+    .main_4{height: 100vh;background-image:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url('../../assets/images/season/fall.jpeg');background-size:cover;color:#fff;position: relative;}
     .main_text{color:#fff;position: absolute;bottom: 0;width: 100%;}
 </style>
