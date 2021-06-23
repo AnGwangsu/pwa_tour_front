@@ -23,8 +23,23 @@
                     </v-flex>
                 </v-flex>
                 <!--메인2-->
-                <v-flex>
-                    <v-flex></v-flex>
+                <v-flex class="mb-5">
+                    <v-flex class="mx-5 mt-10" style="font-size:20px;font-weight:600">City</v-flex>
+                    <v-flex class="mx-5">
+                        <v-slide-group multiple>  
+                            <v-slide-item v-for="i in 6" :key="i">
+                                <v-card class="my-2 mx-2" width="180" height="300">
+
+                                </v-card>
+                            </v-slide-item>
+                        </v-slide-group>
+                    </v-flex>
+                </v-flex>
+                <!--메인3-->
+                <v-flex class="mb-5"> 
+                    <v-flex>
+                        
+                    </v-flex>
                 </v-flex>
             </v-flex>
         </v-layout>
