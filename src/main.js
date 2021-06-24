@@ -4,11 +4,13 @@ import './registerServiceWorker'
 import vuetify from './plugins/vuetify'
 import router from './routes/index'
 import Dayjs from 'vue-dayjs-plugin'
+import VueAxios from 'vue-axios'
+import axios from './axios'
 
 Vue.config.productionTip = false
 
 Vue.use(Dayjs)
-
+Vue.use(VueAxios,axios)
 new Vue({
   vuetify,
   router,
