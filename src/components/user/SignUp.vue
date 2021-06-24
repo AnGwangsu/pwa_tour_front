@@ -1,8 +1,9 @@
 <template>
-    <v-container fluid style="padding:0;height:100%">
+    <v-container fluid style="padding:0;height:100%;position:relative;overflow:hidden">
+        <v-flex class="pa-3" style="positon:absolute;top:0"><v-icon @click="$router.push(-1)" size="30">mdi-chevron-left</v-icon></v-flex>
         <v-layout style="height:100%">
             <v-flex class="mx-4">
-                <v-flex class="my-10" style="font-weight:600;font-size:30px">회원가입</v-flex>
+                <v-flex class="mb-10 mt-3" style="font-weight:600;font-size:30px">회원가입</v-flex>
                 <v-layout class="mb-5">
                     <v-flex xs2 @click="check=!check">
                         <v-icon v-if="check==false" size="30">mdi-checkbox-blank-outline</v-icon>
