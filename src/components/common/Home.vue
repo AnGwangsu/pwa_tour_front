@@ -157,7 +157,6 @@ export default {
     created(){
         this.month=parseInt(this.$date().format('MM'))
         this.seasonChange()
-        this.exchangeRate()
     },
     computed:{
         classObj:function(){
