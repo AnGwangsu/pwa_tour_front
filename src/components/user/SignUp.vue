@@ -15,7 +15,7 @@
                 <v-flex class="mb-15">
                     <v-layout class="mb-3" align-center style="border:1px solid #e7e7e7">
                         <v-flex><v-text-field dense solo flat hide-details placeholder="이메일 형식으로 입력해주세요"></v-text-field></v-flex>
-                        <v-flex class="mr-2 py-1" style="text-align:center;background:#91f7ee;font-size:13px;color:#b7b7b7">중복확인</v-flex>
+                        <v-flex class="mr-2 py-1" style="text-align:center;background:#91f7ee;font-size:13px;color:#363636">중복확인</v-flex>
                     </v-layout>
                     <v-layout class="mb-3" align-center style="border:1px solid #e7e7e7">
                         <v-flex><v-text-field type="password" dense solo flat hide-details placeholder="비밀번호를 입력해주세요"></v-text-field></v-flex>
@@ -25,9 +25,9 @@
                     </v-layout>
                     <v-layout class="mb-8" align-center style="border:1px solid #e7e7e7">
                         <v-flex><v-text-field type="password" dense solo flat hide-details placeholder="별명을 설정해주세요"></v-text-field></v-flex>
-                        <v-flex class="mr-2 py-1" style="text-align:center;background:#91f7ee;font-size:13px;color:#b7b7b7">중복확인</v-flex>
+                        <v-flex class="mr-2 py-1" style="text-align:center;background:#91f7ee;font-size:13px;color:#363636">중복확인</v-flex>
                     </v-layout>
-                    <v-flex class="py-2" style="font-size:25px;text-align:center;font-weight:600;background:#91f7ee;color:#b7b7b7;border-radius:10px">회원가입</v-flex>
+                    <v-flex class="py-2" style="font-size:25px;text-align:center;font-weight:600;background:#91f7ee;color:#363636;border-radius:10px">회원가입</v-flex>
                 </v-flex>
                 <v-flex class="mb-3" style="text-align:center;text-decoration:underline;opacity:.7;font-size:14px">sns 회원가입</v-flex>
                 <v-layout justify-center>
