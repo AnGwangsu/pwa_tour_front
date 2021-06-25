@@ -79,14 +79,18 @@
                 <!--메인3-->
                 <v-flex class="mb-15"> 
                     <v-flex class="mx-5">
-                        <v-flex class="mb-5" style="font-size:20px;font-weight:600">{{month}}월! 이달의 성지</v-flex>
-                        <v-layout row>
-                            <v-flex xs6>
-                                <v-flex class="mx-3" style="height:200px">
-                                    <v-flex style="height:75%;background:#e6e6e6"></v-flex>
+                        <v-layout align-center class="mb-5">
+                            <v-flex class="mx-2" style="font-size:18px;font-weight:600">HOT해! HOT해! </v-flex>
+                            <v-flex style="text-align:right;font-size:13px;text-decoration:underline">더보기 ></v-flex>
+                        </v-layout>
+                        <v-layout row class="mx-1">
+                            <v-flex xs6 v-for="(hot,index) in hotList" :key="index">
+                                <v-flex class="mx-1" style="height:200px">
+                                    <v-flex style="height:75%;">
+                                        <img :src="hot.firstimage2" width="100%" height="100%">
+                                    </v-flex>
                                     <v-flex class="mt-3">
-                                        <v-flex style="font-size:13px;font-weight:600">타이틀1</v-flex>
-                                        <v-flex class="mt-2" style="font-size:12px">설명1</v-flex>
+                                        <v-flex style="font-size:13px;font-weight:600">{{hot.title}}</v-flex>
                                     </v-flex>
                                 </v-flex>
                             </v-flex>
@@ -96,14 +100,18 @@
                 <!--메인4-->
                 <v-flex class="mb-15"> 
                     <v-flex class="mx-5">
-                        <v-flex class="mb-5" style="font-size:20px;font-weight:600">한국을 즐기고싶다면 바로 이곳!</v-flex>
-                        <v-layout row>
-                            <v-flex xs6>
-                                <v-flex class="mx-3" style="height:200px">
-                                    <v-flex style="height:75%;background:#e6e6e6"></v-flex>
+                        <v-layout class="mb-5" align-center>
+                            <v-flex class="mx-2" style="font-size:18px;font-weight:600">한국을 즐기고싶다면 바로 이곳!</v-flex>
+                            <v-flex style="text-align:right;font-size:13px;text-decoration:underline">더보기 ></v-flex>
+                        </v-layout>
+                        <v-layout row class="mx-1">
+                            <v-flex xs6 v-for="(enter,index) in enterList" :key="index">
+                                <v-flex class="mx-1" style="height:200px">
+                                    <v-flex style="height:75%;">
+                                        <img :src="enter.firstimage2" width="100%" height="100%">
+                                    </v-flex>
                                     <v-flex class="mt-3">
-                                        <v-flex style="font-size:13px;font-weight:600">타이틀1</v-flex>
-                                        <v-flex class="mt-2" style="font-size:12px">설명1</v-flex>
+                                        <v-flex style="font-size:13px;font-weight:600">{{enter.title}}</v-flex>
                                     </v-flex>
                                 </v-flex>
                             </v-flex>
@@ -146,17 +154,23 @@ export default {
             month:0,
             season:0,
             citys:['SEOUL','GYEONGGI-DO','DAEGU','BUSAN'],
-            cityBackground:[
-                require('../../assets/images/city/seoul.png')
-            ],
             city:'SEOUL',
             dialog:false,
-            exchange:{}
+            exchange:{},
+
+            hotList:[],
+            contentId:0,
+            enterList:[],
+            //공공데이터 활용 필드
+            areaCode:1,
+
         }
     },
     created(){
         this.month=parseInt(this.$date().format('MM'))
         this.seasonChange()
+        this.hotLocation()
+        this.entertainLocation()
     },
     computed:{
         classObj:function(){
@@ -183,15 +197,78 @@ export default {
         cityChoice(number){
             if(number==1){
                 this.city='SEOUL'
+                this.areaCode=1
+                this.hotLocation()
+                this.entertainLocation()
             }else if(number==2){
                 this.city='GYEONGGI-DO'
+                this.hotLocation()
+                this.entertainLocation()
             }else if(number==3){
                 this.city='DAEGU'
+                this.areaCode=4
+                this.hotLocation()
+                this.entertainLocation()
             }else{
                 this.city='BUSAN'
+                this.areaCode=6
+                this.hotLocation()
+                this.entertainLocation()
             }
             this.dialog=false
         },
+        async hotLocation(){
+            try {
+                var page = 1
+                var limit = 4
+                var areaCode = this.areaCode
+                var contentTypeId = 12
+                var cat1 = 'A02'
+                var cat2 = 'A0203'
+                var cat3 = 'A02030600'
+                var arrange = 'B'
+                var res = await this.axios.post('/data/locationList',{
+                    page,
+                    limit,
+                    areaCode,
+                    arrange,
+                    cat1,
+                    cat2,
+                    cat3,
+                    contentTypeId
+                })
+                if(res.data.resultCode==1){
+                    this.hotList=res.data.data.items
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        },
+        async entertainLocation(){
+            try {
+                var page = 1
+                var limit = 4
+                var areaCode = this.areaCode
+                var contentTypeId = 15
+                var cat1 = 'A02'
+                var cat2 = 'A0207'
+                var arrange = 'B'
+                var res = await this.axios.post('/data/locationList',{
+                    page,
+                    limit,
+                    areaCode,
+                    arrange,
+                    cat1,
+                    cat2,
+                    contentTypeId
+                })
+                if(res.data.resultCode==1){
+                    this.enterList=res.data.data.items
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        }
         // async exchangeRate(){
         //     try {
         //         var res = await axios.get(`https://v6.exchangerate-api.com/v6/${key.exchangeKey}/latest/USD`)
