@@ -68,9 +68,14 @@
                     </v-flex>
                     <v-flex class="mx-5">
                         <v-slide-group multiple>  
-                            <v-slide-item v-for="i in 5" :key="i">
-                                <v-card class="my-2 mx-2" width="180" height="250">
-
+                            <v-slide-item v-for="(i,index) in category" :key="index" style="cursor:pointer">
+                                <v-card class="my-2 mx-2" width="180" height="230" @click="selectCategory(index)">
+                                    <v-flex style="height:100%">
+                                        <v-flex class="pa-5">
+                                            <img :src="i.img" width="100%" height="100%">
+                                        </v-flex>
+                                        <v-flex class="pa-2" style="font-size:18px;font-weight:600;text-align:center">{{i.name}}</v-flex>
+                                    </v-flex>
                                 </v-card>
                             </v-slide-item>
                         </v-slide-group>
@@ -155,12 +160,36 @@ export default {
             season:0,
             citys:['SEOUL','GYEONGGI-DO','DAEGU','BUSAN'],
             city:'SEOUL',
+            category:[
+                {
+                    img:require('../../assets/images/category/hotel.png'),
+                    name:'숙박'
+                },
+                {
+                    img:require('../../assets/images/category/road.png'),
+                    name:'거리'
+                },
+                {
+                    img:require('../../assets/images/category/shopping.png'),
+                    name:'쇼핑'
+                },
+                {
+                    img:require('../../assets/images/category/festival.png'),
+                    name:'축제'
+                },
+                {
+                    img:require('../../assets/images/category/show.png'),
+                    name:'공연'
+                }
+            ],
             dialog:false,
             exchange:{},
 
             hotList:[],
             contentId:0,
             enterList:[],
+
+
             //공공데이터 활용 필드
             areaCode:1,
 
@@ -202,6 +231,7 @@ export default {
                 this.entertainLocation()
             }else if(number==2){
                 this.city='GYEONGGI-DO'
+                this.areaCode=31
                 this.hotLocation()
                 this.entertainLocation()
             }else if(number==3){
@@ -267,6 +297,14 @@ export default {
                 }
             } catch (error) {
                 console.log(error)
+            }
+        },
+        selectCategory(index){
+            localStorage.setItem('areaCode',this.areaCode)
+            if(index==0){
+                this.$router.push({
+                    path:'/lodgment'
+                })
             }
         }
         // async exchangeRate(){
