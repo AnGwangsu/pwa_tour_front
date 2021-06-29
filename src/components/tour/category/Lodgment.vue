@@ -37,6 +37,7 @@ export default {
     data() {
         return {
             items:[],
+            areaCode:0,
             codeNames:[],
             sigungu:0,
             stayList:[],
@@ -45,6 +46,7 @@ export default {
         }
     },
     created(){
+        this.areaCode=localStorage.getItem('areaCode')
         if(this.areaCode==1){
             this.areaCodeList()
             this.sigungu=1
@@ -54,23 +56,28 @@ export default {
     methods:{
         async lodgmentList(){
             try {
-                var areaCode=localStorage.getItem('areaCode')
                 var sigunguCode = this.sigungu
                 var res = await this.axios.post('/data/stayList',{
-                    areaCode,
+                    areaCode:this.areaCode,
                     sigunguCode,
                     limit:this.limit
                 })
                 this.stayList=res.data.data.items
+                console.log(this.stayList)
+                if(this.stayList ==undefined || this.stayList.length==undefined){
+                    this.stayFalse=true
+                }else{
+                    this.stayFalse=false
+                }
+                console.log(this.stayList)
             } catch (error) {
                 console.log(error)
             }
         },
         async areaCodeList(){
             try {
-                var areaCode=localStorage.getItem('areaCode')
                 var res = await this.axios.post('/data/locationCode',{
-                    areaCode
+                    areaCode:this.areaCode
                 })
                 if(res.data.resultCode==1){
                     this.items=res.data.data.items

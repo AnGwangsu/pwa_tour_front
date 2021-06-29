@@ -86,7 +86,7 @@
                     <v-flex class="mx-5">
                         <v-layout align-center class="mb-5">
                             <v-flex class="mx-2" style="font-size:18px;font-weight:600">HOT해! HOT해! </v-flex>
-                            <v-flex style="text-align:right;font-size:13px;text-decoration:underline">더보기 ></v-flex>
+                            <v-flex style="text-align:right;font-size:13px;text-decoration:underline" @click="moreList(1)">더보기 ></v-flex>
                         </v-layout>
                         <v-layout row class="mx-1">
                             <v-flex xs6 v-for="(hot,index) in hotList" :key="index">
@@ -107,7 +107,7 @@
                     <v-flex class="mx-5">
                         <v-layout class="mb-5" align-center>
                             <v-flex class="mx-2" style="font-size:18px;font-weight:600">한국을 즐기고싶다면 바로 이곳!</v-flex>
-                            <v-flex style="text-align:right;font-size:13px;text-decoration:underline">더보기 ></v-flex>
+                            <v-flex style="text-align:right;font-size:13px;text-decoration:underline" @click="moreList(2)">더보기 ></v-flex>
                         </v-layout>
                         <v-layout row class="mx-1">
                             <v-flex xs6 v-for="(enter,index) in enterList" :key="index">
@@ -151,8 +151,6 @@
 </template>
 
 <script>
-// import axios from 'axios'
-// import key from '../../config'
 export default {
     data() {
         return {
@@ -249,14 +247,14 @@ export default {
         },
         async hotLocation(){
             try {
-                var page = 1
+                var page = parseInt(Math.random()*10)+1
                 var limit = 4
                 var areaCode = this.areaCode
                 var contentTypeId = 12
                 var cat1 = 'A02'
                 var cat2 = 'A0203'
                 var cat3 = 'A02030600'
-                var arrange = 'B'
+                var arrange = 'P'
                 var res = await this.axios.post('/data/locationList',{
                     page,
                     limit,
@@ -276,13 +274,13 @@ export default {
         },
         async entertainLocation(){
             try {
-                var page = 1
+                var page = parseInt(Math.random()*10)+1
                 var limit = 4
                 var areaCode = this.areaCode
                 var contentTypeId = 15
                 var cat1 = 'A02'
                 var cat2 = 'A0207'
-                var arrange = 'B'
+                var arrange = 'P'
                 var res = await this.axios.post('/data/locationList',{
                     page,
                     limit,
@@ -334,6 +332,17 @@ export default {
                     path:'/categoryCommon'
                 })
             }
+        },
+        moreList(number){
+            if(number==1){
+                this.$router.push({
+                    path:'/hotList'
+                })
+            }else{
+                this.$router.push({
+                    path:'/enterList'
+                })
+            }   
         }
         // async exchangeRate(){
         //     try {

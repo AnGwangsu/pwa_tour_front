@@ -14,6 +14,7 @@ import SignUp from '@/components/user/SignUp'
 //tour
 import Lodgemnt from '@/components/tour/category/Lodgment'
 import CategoryCommon from '@/components/tour/category/CategoryCommon' 
+import HotList from '@/components/tour/tourList/HotList'
 
 export default new Router({
     mode:'history',
@@ -50,6 +51,11 @@ export default new Router({
             path:'/categoryCommon',
             name:'CategoryCommon',
             component:CategoryCommon
+        },
+        {
+            path:'/hotList',
+            name:'HotList',
+            component:HotList
         }
     ]
 })
