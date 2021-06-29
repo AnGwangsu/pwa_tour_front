@@ -166,8 +166,8 @@ export default {
                     name:'숙박'
                 },
                 {
-                    img:require('../../assets/images/category/road.png'),
-                    name:'거리'
+                    img:require('../../assets/images/category/restaurant.png'),
+                    name:'식당/카페'
                 },
                 {
                     img:require('../../assets/images/category/shopping.png'),
@@ -304,6 +304,34 @@ export default {
             if(index==0){
                 this.$router.push({
                     path:'/lodgment'
+                })
+            }else if(index==1){
+                localStorage.setItem('contentTypeId',39)
+                localStorage.setItem('cat1','A05')
+                localStorage.setItem('cat2','A0502')
+                this.$router.push({
+                    path:'/categoryCommon'
+                })
+            }else if(index ==2){
+                localStorage.setItem('contentTypeId',38)
+                localStorage.setItem('cat1','A04')
+                localStorage.setItem('cat2','A0401')
+                this.$router.push({
+                    path:'/categoryCommon'
+                }) 
+            }else if(index==3){
+                localStorage.setItem('contentTypeId',15)
+                localStorage.setItem('cat1','A02')
+                localStorage.setItem('cat2','A0207')
+                this.$router.push({
+                    path:'/categoryCommon'
+                })
+            }else if(index==4){
+                localStorage.setItem('contentTypeId',15)
+                localStorage.setItem('cat1','A02')
+                localStorage.setItem('cat2','A0208')
+                this.$router.push({
+                    path:'/categoryCommon'
                 })
             }
         }
