@@ -16,8 +16,8 @@
                     </v-layout>
                     <v-flex class="main_text">
                         <v-flex class="px-5 mb-5">
-                            <v-flex class="mb-3">#슬기로운_여가생활</v-flex>
-                            <v-flex style="font-weight:600;font-size:25px">{{month}}월, 당신이 사랑하게 될<br>한국의 휴양지</v-flex>
+                            <v-flex class="mb-3">#슬기로운_서울생활</v-flex>
+                            <v-flex style="font-weight:600;font-size:25px">{{month}}월, 당신이 사랑하게 될<br>서울의 관광지</v-flex>
                         </v-flex>
                         <v-flex class="mb-3" style="text-align:center"><v-icon color="#fff" size="35">mdi-chevron-double-up</v-icon></v-flex>
                     </v-flex>
@@ -28,7 +28,7 @@
                         <v-flex class="mt-10" style="font-size:12px;color:#0066FF">나는 지금..</v-flex>
                         <v-layout>
                             <v-flex style="font-size:20px;font-weight:600">{{city}}</v-flex>
-                            <v-flex style="text-align:right"><v-icon @click="dialog=true">mdi-crosshairs-gps</v-icon></v-flex>
+                            <!-- <v-flex style="text-align:right"><v-icon @click="dialog=true">mdi-crosshairs-gps</v-icon></v-flex>
                             <v-dialog v-model="dialog">
                                 <v-card class="pa-3">
                                     <v-flex style="text-align:right"><v-icon @click="dialog=false">mdi-close</v-icon></v-flex>
@@ -63,7 +63,7 @@
                                         </v-flex>
                                     </v-layout>
                                 </v-card>
-                            </v-dialog>
+                            </v-dialog> -->
                         </v-layout>
                     </v-flex>
                     <v-flex class="mx-5">
@@ -89,13 +89,13 @@
                             <v-flex style="text-align:right;font-size:13px;text-decoration:underline" @click="moreList(1)">더보기 ></v-flex>
                         </v-layout>
                         <v-layout row class="mx-1">
-                            <v-flex xs6 v-for="(hot,index) in hotList" :key="index">
+                            <v-flex xs6 v-for="(hot,index) in hotList" :key="index" class="mb-2">
                                 <v-flex class="mx-1" style="height:200px">
                                     <v-flex style="height:75%;">
                                         <img :src="hot.firstimage2" width="100%" height="100%">
                                     </v-flex>
-                                    <v-flex class="mt-3">
-                                        <v-flex style="font-size:13px;font-weight:600">{{hot.title}}</v-flex>
+                                    <v-flex class="mt-1">
+                                        <v-flex style="font-size:12px;font-weight:600">{{hot.title}}</v-flex>
                                     </v-flex>
                                 </v-flex>
                             </v-flex>
@@ -110,13 +110,13 @@
                             <v-flex style="text-align:right;font-size:13px;text-decoration:underline" @click="moreList(2)">더보기 ></v-flex>
                         </v-layout>
                         <v-layout row class="mx-1">
-                            <v-flex xs6 v-for="(enter,index) in enterList" :key="index">
+                            <v-flex xs6 v-for="(enter,index) in enterList" :key="index" class="mb-2">
                                 <v-flex class="mx-1" style="height:200px">
                                     <v-flex style="height:75%;">
                                         <img :src="enter.firstimage2" width="100%" height="100%">
                                     </v-flex>
-                                    <v-flex class="mt-3">
-                                        <v-flex style="font-size:13px;font-weight:600">{{enter.title}}</v-flex>
+                                    <v-flex class="mt-1">
+                                        <v-flex style="font-size:12px;font-weight:600">{{enter.title}}</v-flex>
                                     </v-flex>
                                 </v-flex>
                             </v-flex>
@@ -156,7 +156,7 @@ export default {
         return {
             month:0,
             season:0,
-            citys:['SEOUL','GYEONGGI-DO','DAEGU','BUSAN'],
+            // citys:['SEOUL','GYEONGGI-DO','DAEGU','BUSAN'],
             city:'SEOUL',
             category:[
                 {
@@ -194,6 +194,7 @@ export default {
         }
     },
     created(){
+        this.areaCode=localStorage.getItem('areaCode')
         this.month=parseInt(this.$date().format('MM'))
         this.seasonChange()
         this.hotLocation()
@@ -243,6 +244,7 @@ export default {
                 this.hotLocation()
                 this.entertainLocation()
             }
+            localStorage.setItem('areaCode',this.areaCode)
             this.dialog=false
         },
         async hotLocation(){
