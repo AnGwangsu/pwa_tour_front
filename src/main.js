@@ -6,6 +6,7 @@ import router from './routes/index'
 import Dayjs from 'vue-dayjs-plugin'
 import VueAxios from 'vue-axios'
 import axios from './axios'
+import store from './store/store'
 
 Vue.config.productionTip = false
 
@@ -14,5 +15,6 @@ Vue.use(VueAxios,axios)
 new Vue({
   vuetify,
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')

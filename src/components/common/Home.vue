@@ -89,7 +89,7 @@
                             <v-flex style="text-align:right;font-size:13px;text-decoration:underline" @click="moreList(1)">더보기 ></v-flex>
                         </v-layout>
                         <v-layout row class="mx-1">
-                            <v-flex xs6 v-for="(hot,index) in hotList" :key="index" class="mb-2">
+                            <v-flex xs6 v-for="(hot,index) in hotList" :key="index" class="mb-2" @click="$store.dispatch('Data/contentDetail',hot)">
                                 <v-flex class="mx-1" style="height:200px">
                                     <v-flex style="height:75%;">
                                         <img :src="hot.firstimage2" width="100%" height="100%">
@@ -110,7 +110,7 @@
                             <v-flex style="text-align:right;font-size:13px;text-decoration:underline" @click="moreList(2)">더보기 ></v-flex>
                         </v-layout>
                         <v-layout row class="mx-1">
-                            <v-flex xs6 v-for="(enter,index) in enterList" :key="index" class="mb-2">
+                            <v-flex xs6 v-for="(enter,index) in enterList" :key="index" class="mb-2" @click="$store.dispatch('Data/contentDetail',enter)">
                                 <v-flex class="mx-1" style="height:200px">
                                     <v-flex style="height:75%;">
                                         <img :src="enter.firstimage2" width="100%" height="100%">

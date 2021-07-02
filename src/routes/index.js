@@ -16,6 +16,7 @@ import Lodgemnt from '@/components/tour/category/Lodgment'
 import CategoryCommon from '@/components/tour/category/CategoryCommon' 
 import HotList from '@/components/tour/tourList/HotList'
 import EnterList from '@/components/tour/tourList/EnterList'
+import ContentDetail from '@/components/tour/ContentDetail'
 
 export default new Router({
     mode:'history',
@@ -62,6 +63,11 @@ export default new Router({
             path:'/enterList',
             name:'EnterList',
             component:EnterList
+        },
+        {
+            path:'/contentDetail',
+            name:'ContentDetail',
+            component:ContentDetail
         }
     ]
 })
