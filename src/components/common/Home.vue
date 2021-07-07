@@ -194,7 +194,6 @@ export default {
         }
     },
     created(){
-        this.areaCode=localStorage.getItem('areaCode')
         this.month=parseInt(this.$date().format('MM'))
         this.seasonChange()
         this.hotLocation()

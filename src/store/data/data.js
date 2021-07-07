@@ -14,8 +14,6 @@ const actions = {
         console.log(dataObj)
         localStorage.setItem('contentId',dataObj.contentid)
         localStorage.setItem('contentTypeId',dataObj.contenttypeid)
-        localStorage.setItem('mapx',dataObj.mapx)
-        localStorage.setItem('mapy',dataObj.mapy)
         router.push({
             path:'/contentDetail'
         })
